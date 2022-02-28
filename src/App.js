@@ -54,7 +54,7 @@ const App = () => {
           if(error.code === 4902) {
             try {
               await window.ethereum.request({
-                method: "wallet_addEthereumChainId",
+                method: "wallet_addEthereumChain",
                 params: [
                   {
                     chainId: '0x13881',
