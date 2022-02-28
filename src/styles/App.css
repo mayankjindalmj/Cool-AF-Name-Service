@@ -295,3 +295,12 @@ input:focus {
     background-position: 0% 50%;
   }
 }
+
+a {
+  text-decoration: none !important;
+  color: red;
+}
+
+.subbak {
+  font-size: 15px;
+}
