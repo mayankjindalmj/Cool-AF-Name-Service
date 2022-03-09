@@ -133,7 +133,7 @@ const App = () => {
           ]
         });
         if(ethers.utils.formatEther(accountBalance) < price){
-          if(window.confirm("Insufficient funds. Please confirm to go to Polygon Faucet to get some test MATIC.")){
+          if(window.confirm("Insufficient funds. Please confirm to go to Polygon Faucet to get some test MATIC. You can't buy a Happy Meal with them but surely can buy a domain here :)")){
             window.location = "https://faucet.polygon.technology/";
           } else {
             alert("Insufficient funds.");
