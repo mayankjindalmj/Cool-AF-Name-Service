@@ -120,9 +120,27 @@ const App = () => {
     const price = domain.length === 3 ? '0.5' : domain.length === 4 ? '0.3' : '0.1';
     console.log("Minting domain ", domain, " with price ", price);
 
+    
     try {
       const { ethereum } = window;
       if (ethereum) {
+
+        const accountBalance = await ethereum.request({
+          method: 'eth_getBalance',
+          params: [
+            currentAccount,
+            'latest'
+          ]
+        });
+        if(ethers.utils.formatEther(accountBalance) < price){
+          if(window.confirm("Insufficient funds. Please confirm to go to Polygon Faucet to get some test MATIC.")){
+            window.location = "https://faucet.polygon.technology/";
+          } else {
+            alert("Insufficient funds.");
+          }
+          throw new Error("Insufficient funds. Please go to Polygon faucet to get funds");
+        }
+
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(contractAddress, contractAbi.abi, signer);
